@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.listadefilmes.constants.Constants.FILM_LIST_DATABASE_NAME
 
 @Database(entities = [Film::class], version = 1)
 abstract class FilmDatabase: RoomDatabase() {
@@ -18,10 +19,9 @@ abstract class FilmDatabase: RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     FilmDatabase::class.java,
-                    "FilmsRoom.db"
+                    FILM_LIST_DATABASE_NAME,
                 ).build()
                 INSTANCE = instance
-                // return instance
                 instance
             }
         }

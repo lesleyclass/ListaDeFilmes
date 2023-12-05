@@ -15,10 +15,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listadefilmes.adapter.FilmAdapter
 import com.example.listadefilmes.R
+import com.example.listadefilmes.constants.Constants.ID_FILM
 import com.example.listadefilmes.databinding.FragmentListFilmsBinding
 import com.example.listadefilmes.viewmodel.FilmsViewModel
 
@@ -56,7 +56,7 @@ class ListFilmsFragment : Fragment(){
                 val searchView = menu.findItem(R.id.actionSearch).actionView as SearchView
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(p0: String?): Boolean {
-                        TODO("Not yet implemented")
+                        return true
                     }
 
                     override fun onQueryTextChange(p0: String?): Boolean {
@@ -67,8 +67,10 @@ class ListFilmsFragment : Fragment(){
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                TODO("Not yet implemented")
+                return true
             }
+
+
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
@@ -87,11 +89,11 @@ class ListFilmsFragment : Fragment(){
         recyclerView.adapter = filmAdapter
 
         val listener = object : FilmAdapter.FilmListener {
-            override fun onItemClick(pos: Int) {
-                val c = filmAdapter.filmsListFilterable[pos]
+            override fun onItemClick(position: Int) {
+                val itemClick = filmAdapter.filmsListFilterable[position]
 
                 val bundle = Bundle()
-                bundle.putInt("idFilm", c.id)
+                bundle.putInt(ID_FILM, itemClick.id)
 
                 findNavController().navigate(
                     R.id.actionListFilmsFragmentToListDetailsFragment,

@@ -6,7 +6,6 @@
     android:layout_marginTop="16dp"
     tools:context=".ui.FilmDetailsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <include layout="@layout/common_layout"
         android:id="@+id/common_layout" />
 

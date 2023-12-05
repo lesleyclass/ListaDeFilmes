@@ -17,6 +17,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.listadefilmes.R
+import com.example.listadefilmes.constants.Constants.ID_FILM
 import com.example.listadefilmes.data.Film
 import com.example.listadefilmes.databinding.FragmentFilmDetailsBinding
 import com.example.listadefilmes.viewmodel.FilmsViewModel
@@ -37,7 +38,7 @@ class FilmDetailsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(FilmsViewModel::class.java)
+        viewModel = ViewModelProvider(this)[FilmsViewModel::class.java]
     }
 
     override fun onCreateView(
@@ -64,7 +65,7 @@ class FilmDetailsFragment : Fragment() {
             }
         }
 
-        val idFilm = requireArguments().getInt("idFilm")
+        val idFilm = requireArguments().getInt(ID_FILM)
 
         viewModel.getFilmById(idFilm)
 
@@ -99,7 +100,7 @@ class FilmDetailsFragment : Fragment() {
                         film.isBeenWatched = radioButtonYes.isChecked
                         viewModel.update(film)
 
-                        Snackbar.make(binding.root, "Filme alterado", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.action_edit_film_label), Snackbar.LENGTH_SHORT).show()
 
                         findNavController().popBackStack()
                         true
@@ -107,7 +108,7 @@ class FilmDetailsFragment : Fragment() {
                     R.id.actionDeleteFilm ->{
                         viewModel.delete(film)
 
-                        Snackbar.make(binding.root, "Filme apagado", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.action_delete_film_label), Snackbar.LENGTH_SHORT).show()
 
                         findNavController().popBackStack()
                         true

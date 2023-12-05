@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -10,18 +11,21 @@
         android:id="@+id/textNome"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:text="Nome do Filme"
+        android:text="@string/film_name"
         android:textSize="30sp"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="TextViewEdits" />
 
     <EditText
         android:id="@+id/editTextNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
+        android:hint="@string/film_name_hint"
+        android:textColorHint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textNome" />
@@ -30,7 +34,7 @@
         android:id="@+id/textReleaseYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ano de Lançamento"
+        android:text="@string/film_release_year"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,8 +44,10 @@
         android:id="@+id/editTextReleaseYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:inputType="numberDecimal"
+        android:hint="@string/film_release_year_hint"
+        android:textColorHint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textReleaseYear"
@@ -51,7 +57,7 @@
         android:id="@+id/isBeenWatched"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Já Assistir?"
+        android:text="@string/film_is_been_watched"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,14 +79,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Sim" />
+            android:text="@string/button_yes" />
 
         <RadioButton
             android:id="@+id/radioButtonNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Não" />
+            android:text="@string/button_no" />
 
     </RadioGroup>
 

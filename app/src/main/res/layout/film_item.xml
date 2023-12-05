@@ -14,7 +14,7 @@
         android:layout_margin="10dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Título"
+        android:text="@string/film_title"
         android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/releaseYear"
@@ -30,7 +30,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="Subtítulo"
+        android:text="@string/film_subtitle"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iconCheck"
@@ -48,5 +48,6 @@
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/icon_check" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,7 +59,7 @@ class NewFilmFragment : Fragment() {
 
                         viewModel.insert(film)
 
-                        Snackbar.make(binding.root, "Filme inserido", Snackbar.LENGTH_SHORT).show()
+                        Snackbar.make(binding.root, getString(R.string.action_save_film_label), Snackbar.LENGTH_SHORT).show()
                         findNavController().popBackStack()
                         true
                     }
