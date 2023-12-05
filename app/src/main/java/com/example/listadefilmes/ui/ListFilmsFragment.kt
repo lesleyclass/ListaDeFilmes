@@ -38,7 +38,7 @@ class ListFilmsFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentListFilmsBinding.inflate(inflater, container, false)
-        binding.floatingActionButton.setOnClickListener { findNavController().navigate(R.id.actionListFilmsToNewFilmFragment) }
+        binding.addFloatingActionButton.setOnClickListener { findNavController().navigate(R.id.actionListFilmsToNewFilmFragment) }
         return binding.root
     }
 
@@ -85,13 +85,6 @@ class ListFilmsFragment : Fragment(){
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         filmAdapter = FilmAdapter()
         recyclerView.adapter = filmAdapter
-
-        val dividerItemDecoration = DividerItemDecoration(
-            requireContext(),
-            LinearLayoutManager.VERTICAL
-        )
-        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.divider))
-        recyclerView.addItemDecoration(dividerItemDecoration)
 
         val listener = object : FilmAdapter.FilmListener {
             override fun onItemClick(pos: Int) {

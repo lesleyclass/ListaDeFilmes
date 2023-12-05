@@ -1,6 +1,6 @@
 package com.example.listadefilmes.adapter
 
-import com.example.listadefilmes.R
+import android.R
 import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -40,9 +40,9 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.FilmViewHolder>(),
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
         val bitmap = BitmapFactory.decodeResource(holder.itemView.context.resources,
             if (filmsListFilterable[position].isBeenWatched) {
-                R.drawable.baseline_play_circle
+                R.drawable.presence_video_online
             } else {
-                R.drawable.baseline_play_circle_outline
+                R.drawable.presence_video_busy
             }
         )
 

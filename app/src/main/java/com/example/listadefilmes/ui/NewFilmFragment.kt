@@ -42,6 +42,8 @@ class NewFilmFragment : Fragment() {
 
         val menuHost: MenuHost = requireActivity()
 
+        binding.commonLayout.radioButtonYes.isChecked = true
+
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.new_film_menu, menu)
