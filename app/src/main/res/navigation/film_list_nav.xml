@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/film_list_nav"
+    app:startDestination="@id/listFilmsFragment">
+
+    <fragment
+        android:id="@+id/listFilmsFragment"
+        android:name="com.example.listadefilmes.ui.ListFilmsFragment"
+        android:label="Filmes"
+        tools:layout="@layout/fragment_list_films" >
+        <action
+            android:id="@+id/actionListFilmsToNewFilmFragment"
+            app:destination="@id/newFilmFragment" />
+        <action
+            android:id="@+id/actionListFilmsFragmentToListDetailsFragment"
+            app:destination="@id/filmDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newFilmFragment"
+        android:name="com.example.listadefilmes.ui.NewFilmFragment"
+        android:label="Novo Filme"
+        tools:layout="@layout/fragment_new_film" />
+    <fragment
+        android:id="@+id/filmDetailsFragment"
+        android:name="com.example.listadefilmes.ui.FilmDetailsFragment"
+        android:label="Detalhes do Filme"
+        tools:layout="@layout/fragment_film_details" />
+</navigation>
