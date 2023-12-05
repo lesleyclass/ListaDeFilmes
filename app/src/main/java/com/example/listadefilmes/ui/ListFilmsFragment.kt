@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.listadefilmes.adapter.FilmAdapter
 import com.example.listadefilmes.R
@@ -84,6 +85,13 @@ class ListFilmsFragment : Fragment(){
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         filmAdapter = FilmAdapter()
         recyclerView.adapter = filmAdapter
+
+        val dividerItemDecoration = DividerItemDecoration(
+            requireContext(),
+            LinearLayoutManager.VERTICAL
+        )
+        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.divider))
+        recyclerView.addItemDecoration(dividerItemDecoration)
 
         val listener = object : FilmAdapter.FilmListener {
             override fun onItemClick(pos: Int) {

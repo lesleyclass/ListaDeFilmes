@@ -1,5 +1,7 @@
 package com.example.listadefilmes.adapter
 
+import com.example.listadefilmes.R
+import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
@@ -36,8 +38,18 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.FilmViewHolder>(),
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
+        val bitmap = BitmapFactory.decodeResource(holder.itemView.context.resources,
+            if (filmsListFilterable[position].isBeenWatched) {
+                R.drawable.baseline_play_circle
+            } else {
+                R.drawable.baseline_play_circle_outline
+            }
+        )
+
         holder.nameVH.text = filmsListFilterable[position].name
         holder.releaseYearVH.text = filmsListFilterable[position].releaseYear
+        holder.iconCheck.setImageBitmap(bitmap)
+
     }
 
     override fun getItemCount(): Int {
@@ -48,6 +60,7 @@ class FilmAdapter: RecyclerView.Adapter<FilmAdapter.FilmViewHolder>(),
     {
         val nameVH = view.name
         val releaseYearVH = view.releaseYear
+        val iconCheck = view.iconCheck
 
         init {
             view.root.setOnClickListener {

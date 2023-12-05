@@ -52,9 +52,8 @@ class NewFilmFragment : Fragment() {
                     R.id.actionSaveFilm -> {
                         val name = binding.commonLayout.editTextNome.text.toString()
                         val releaseYear = binding.commonLayout.editTextReleaseYear.text.toString()
-                        val isBeenWatched =
-                            binding.commonLayout.editTextIsBeenWatched.text.toString()
-                        val film = Film(0, name, releaseYear, isBeenWatched.isEmpty())
+                        val isBeenWatched = binding.commonLayout.radioButtonYes.isChecked
+                        val film = Film(0, name, releaseYear, isBeenWatched)
 
                         viewModel.insert(film)
 

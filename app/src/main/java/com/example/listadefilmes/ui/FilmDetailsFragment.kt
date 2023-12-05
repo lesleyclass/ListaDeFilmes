@@ -9,6 +9,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
@@ -24,9 +26,12 @@ class FilmDetailsFragment : Fragment() {
     private var _binding: FragmentFilmDetailsBinding? = null
     private val binding get() = _binding!!
     lateinit var film: Film
-    private lateinit  var nameEditText: EditText
+    private lateinit var nameEditText: EditText
     private lateinit var releaseYearEditText: EditText
-    private lateinit var isBeenWatchedEditText: EditText
+    private lateinit var isBeenWatchedRadioGroup: RadioGroup
+    private lateinit var radioButtonYes: RadioButton
+    private lateinit var radioButtonNo: RadioButton
+
     lateinit var viewModel: FilmsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +53,16 @@ class FilmDetailsFragment : Fragment() {
 
         nameEditText = binding.commonLayout.editTextNome
         releaseYearEditText = binding.commonLayout.editTextReleaseYear
-        isBeenWatchedEditText = binding.commonLayout.editTextIsBeenWatched
+        isBeenWatchedRadioGroup = binding.commonLayout.isBeenWatchedRadioGroup
+        radioButtonYes = binding.commonLayout.radioButtonYes
+        radioButtonNo = binding.commonLayout.radioButtonNo
+
+        isBeenWatchedRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            when(checkedId) {
+                R.id.radioButtonYes -> { film.isBeenWatched = true }
+                R.id.radioButtonYes -> { film.isBeenWatched = false }
+            }
+        }
 
         val idFilm = requireArguments().getInt("idFilm")
 
@@ -59,7 +73,13 @@ class FilmDetailsFragment : Fragment() {
                 film = result
                 nameEditText.setText(film.name)
                 releaseYearEditText.setText(film.releaseYear)
-                isBeenWatchedEditText.setText(film.isBeenWatched.toString())
+                if (film.isBeenWatched){
+                    radioButtonYes.isChecked = true
+                    radioButtonNo.isChecked = false
+                }else{
+                    radioButtonNo.isChecked = true
+                    radioButtonYes.isChecked = false
+                }
             }
         }
 
@@ -76,8 +96,7 @@ class FilmDetailsFragment : Fragment() {
 
                         film.name = nameEditText.text.toString()
                         film.releaseYear = releaseYearEditText.text.toString()
-                        film.isBeenWatched = isBeenWatchedEditText.text.toString().isEmpty()
-
+                        film.isBeenWatched = radioButtonYes.isChecked
                         viewModel.update(film)
 
                         Snackbar.make(binding.root, "Filme alterado", Snackbar.LENGTH_SHORT).show()
